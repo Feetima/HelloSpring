@@ -1,5 +1,8 @@
 package hello.hellospring.controller;
 
+import hello.hellospring.domain.Member;
+import hello.hellospring.repository.MemberRepository;
+import hello.hellospring.repository.MemoryMemberRepository;
 import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +13,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HelloController {
+
+
+    MemberRepository memberRepository = new MemoryMemberRepository();
+
+
 
     @GetMapping("hello")
     public String hello(Model model){
@@ -49,6 +57,14 @@ public class HelloController {
         }
 
     }
+
+    @GetMapping("api/member")
+    @ResponseBody
+    public Member pengApi(@RequestParam("id") Long id){
+        return memberRepository.findById(id).get();
+    }
+
+
 
 
 }

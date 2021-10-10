@@ -17,11 +17,17 @@ public class MemoryMemberRepository implements MemberRepository{
     }
 
     @Override
+    //Select id, name from Table where id = ?
     public Optional<Member> findById(Long id) {
-        return Optional.ofNullable(store.get(id));
+        Member m = new Member();
+        m.setId(id);
+        m.setName("Penguin");
+        return Optional.ofNullable(m);
     }
 
     @Override
+    //Select id, name from Table where name = ?
+
     public Optional<Member> findByName(String name) {
         return store.values().stream()
                 .filter(member -> member.getName().equals(name))

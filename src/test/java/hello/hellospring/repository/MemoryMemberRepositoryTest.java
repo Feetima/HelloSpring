@@ -22,7 +22,7 @@ public class MemoryMemberRepositoryTest {
     }
 
 
-    @Test
+    //@Test
     public void save(){
         Member member = new Member();
         member.setName("spring");
@@ -37,7 +37,7 @@ public class MemoryMemberRepositoryTest {
 
     }
 
-    @Test
+
     public void findByName(){
         Member member1 = new Member();
         member1.setName("spring1");
@@ -51,7 +51,7 @@ public class MemoryMemberRepositoryTest {
         assertThat(result).isEqualTo(member1);
     }
 
-    @Test
+    //@Test
     public void findAll(){
         Member member1 = new Member();
         member1.setName("spring1");
