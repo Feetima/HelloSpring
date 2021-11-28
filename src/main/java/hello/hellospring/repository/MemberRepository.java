@@ -1,16 +1,21 @@
 package hello.hellospring.repository;
 
 import hello.hellospring.domain.Member;
+import hello.hellospring.mapper.MemberMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.Optional;
+@Component
+public class MemberRepository {
+    @Autowired
+    MemberMapper memberMapper;
 
+    public Member findById(Long id){
+        return memberMapper.findById(id);
+    }
 
-//실제 쿼리
-public interface MemberRepository {
-    Member save(Member member);
-    Optional<Member> findById(Long id);
-    Optional<Member> findByName(String name);
-    List<Member> findAll();
+    public Long countAll(){
+        return memberMapper.countAll();
+    }
 
 }

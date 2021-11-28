@@ -12,59 +12,9 @@ import static org.assertj.core.api.Assertions.*;
 
 public class MemoryMemberRepositoryTest {
 
-    MemoryMemberRepository repository = new MemoryMemberRepository() ;
-
-    // 메모리 초기화
-    // 하나의 테스트 케이스 끝날 때 마다 공용 메모리 지우는 역할
-    @AfterEach
-    public void afterEach(){
-        repository.clearStore();
+    List v;
+    String[] vv;
+    public <T> void Print(T v){
+        System.out.println(v);
     }
-
-
-    //@Test
-    public void save(){
-        Member member = new Member();
-        member.setName("spring");
-
-        repository.save(member);
-
-        Member result = repository.findById(member.getId()).get();
-
-      //  System.out.println("result = " + (result == member));
-
-        assertThat(member).isEqualTo(result);
-
-    }
-
-
-    public void findByName(){
-        Member member1 = new Member();
-        member1.setName("spring1");
-        repository.save(member1);
-
-        Member member2 = new Member();
-        member2.setName("spring2");
-        repository.save(member2);
-
-        Member result = repository.findByName("spring1").get();
-        assertThat(result).isEqualTo(member1);
-    }
-
-    //@Test
-    public void findAll(){
-        Member member1 = new Member();
-        member1.setName("spring1");
-        repository.save(member1);
-
-        Member member2 = new Member();
-        member2.setName("spring2");
-        repository.save(member2);
-
-        List<Member> result = repository.findAll();
-
-        assertThat(result.size()).isEqualTo(2);
-
-    }
-
 }
