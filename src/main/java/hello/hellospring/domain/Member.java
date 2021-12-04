@@ -1,8 +1,17 @@
 package hello.hellospring.domain;
 
+import org.springframework.stereotype.Component;
+
 public class Member {
     private Long id;
     private String name;
+    private String address;
+
+    public Member(Long id, String name, String address) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+    }
 
     public Long getId() {
         return id;
@@ -18,5 +27,13 @@ public class Member {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

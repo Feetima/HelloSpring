@@ -1,54 +1,38 @@
 package hello.hellospring.controller;
 
+
+import hello.hellospring.domain.Member;
 import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import java.util.List;
+
+@RestController
 public class HelloController {
+    @Autowired
+    MemberService memberService;
 
-    @GetMapping("hello")
-    public String hello(Model model){
-        model.addAttribute("data", "hello!!");
-        return "hello";
+    @GetMapping(value = "hello124", produces = "application/json")
+    public Member findByid(Long id){
+        return memberService.findById(id);
     }
 
-    @GetMapping("hello-mvc")
-    public String helloMvc(@RequestParam(value="name") String name, Model model){
-        model.addAttribute("name", name);
-        return "hello-template";
+    @GetMapping("count")
+    public Long countAll(){
+        return memberService.countAll();
     }
 
-    @GetMapping("hello-string")
-    @ResponseBody
-    public String helloString(@RequestParam("name") String name, Model model){
-        return "hello " + name;
+
+    @GetMapping("all")
+    public List<Member> findAll(){
+        return memberService.findAll();
     }
 
-    @GetMapping("hello-api")
-    @ResponseBody
-    public Hello helloApi(@RequestParam("name") String name){
-        Hello hello = new Hello();
-        hello.setName(name);
-        return hello;
+    @GetMapping("findByName")
+    public List<Member> findByName(String name){
+        return memberService.findByName(name);
     }
-
-    static class Hello{
-        private String name;
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name){
-            this.name = name;
-        }
-
-    }
-
 
 }
