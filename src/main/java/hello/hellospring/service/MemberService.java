@@ -5,6 +5,8 @@ import hello.hellospring.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class MemberService {
 
@@ -19,6 +21,12 @@ public class MemberService {
         return memberRepository.countAll();
     }
 
+    public List<Member> findAll(){
+        return memberRepository.findAll();
+    }
 
+    public List<Member> findByName(String name){
+        return memberRepository.findByName(name);
+    }
 
 }

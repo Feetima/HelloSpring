@@ -7,6 +7,12 @@ public class Member {
     private String name;
     private String address;
 
+    public Member(Long id, String name, String address) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+    }
+
     public Long getId() {
         return id;
     }

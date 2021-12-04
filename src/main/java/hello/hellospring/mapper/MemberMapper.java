@@ -14,4 +14,6 @@ public interface MemberMapper {
     List<Member> findAll();
     Member findById(Long id);
     Long countAll();
+    List<Member> findByName(String name);
+
 }
